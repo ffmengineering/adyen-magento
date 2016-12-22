@@ -68,6 +68,7 @@
             <action method="addJs"><script>adyen/payment/cc.js</script></action>
             <action method="addJs"><script>adyen/payment/iban.js</script></action>
             <action method="addJs"><script>adyen/payment/elv.js</script></action>
+            <action method="addJs"><script>adyen/payment/adyen.encrypt_0_1_16.js</script></action>
             <action method="addCss"><stylesheet>css/adyen.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/adyenstyle.css</stylesheet></action>
         </reference>
@@ -94,6 +95,7 @@
             <action method="addJs"><script>adyen/payment/cc.js</script></action>
             <action method="addJs"><script>adyen/payment/iban.js</script></action>
             <action method="addJs"><script>adyen/payment/elv.js</script></action>
+            <action method="addJs"><script>adyen/payment/adyen.encrypt_0_1_16.js</script></action>
             <action method="addCss"><stylesheet>css/adyenstyle.css</stylesheet></action>
         </reference>
         <reference name="after_body_start">
@@ -118,6 +120,7 @@
             <action method="addJs"><script>adyen/payment/cc.js</script></action>
             <action method="addJs"><script>adyen/payment/iban.js</script></action>
             <action method="addJs"><script>adyen/payment/elv.js</script></action>
+            <action method="addJs"><script>adyen/payment/adyen.encrypt_0_1_16.js</script></action>
             <action method="addCss"><stylesheet>css/adyenstyle.css</stylesheet></action>
         </reference>
         <reference name="after_body_start">
@@ -141,6 +144,7 @@
             <action method="addJs"><script>adyen/payment/cc.js</script></action>
             <action method="addJs"><script>adyen/payment/iban.js</script></action>
             <action method="addJs"><script>adyen/payment/elv.js</script></action>
+            <action method="addJs"><script>adyen/payment/adyen.encrypt_0_1_16.js</script></action>
             <action method="addCss"><stylesheet>css/adyenstyle.css</stylesheet></action>
         </reference>
     </checkout_multishipping_billing>
