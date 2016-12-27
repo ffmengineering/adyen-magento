@@ -59,8 +59,8 @@ class Adyen_Fee_Model_Sales_Quote_Address_Total_PaymentFee extends Mage_Sales_Mo
                 $address->setPaymentFeeAmount($address->getQuote()->getStore()->convertPrice($basePaymentFee));
                 $address->setBasePaymentFeeAmount($basePaymentFee);
 
-                $address->setGrandTotal($address->getGrandTotal() + $address->getPaymentFeeAmount());
-                $address->setBaseGrandTotal($address->getBaseGrandTotal() + $address->getBasePaymentFeeAmount());
+                $address->setGrandTotal($address->getGrandTotal() + $address->getPaymentFeeAmount() + $address->getPaymentFeeTax());
+                $address->setBaseGrandTotal($address->getBaseGrandTotal() + $address->getBasePaymentFeeAmount() + $address->getBasePaymentFeeTax());
             }
         }
         return $this;
