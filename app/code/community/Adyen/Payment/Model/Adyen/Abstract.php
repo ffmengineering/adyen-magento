@@ -221,7 +221,7 @@ abstract class Adyen_Payment_Model_Adyen_Abstract extends Mage_Payment_Model_Met
         // check if a zero auth should be done for this order
         $useZeroAuth = (bool)Mage::helper('adyen')->getConfigData('use_zero_auth', null, $order->getStoreId());
         $zeroAuthDateField = (bool)Mage::helper('adyen')->getConfigData('base_zero_auth_on_date', null, $order->getStoreId());
-        
+
         if ($useZeroAuth) { // zero auth should be used
 
             // only orders that are scheduled to be captured later than
@@ -292,11 +292,20 @@ abstract class Adyen_Payment_Model_Adyen_Abstract extends Mage_Payment_Model_Met
      * @param $amount
      */
     public function capture(Varien_Object $payment, $amount) {
+        $order = $payment->getOrder();
+        $useZeroAuth = (bool)Mage::helper('adyen')->getConfigData('use_zero_auth', null, $order->getStoreId());
+        if ($useZeroAuth) { // zero auth should be used
+            $authDate = strtotime($order->getData('created_at'));
+            if ($authDate < strtotime("-7 days")) { // order was auth-ed more than 7 days ago
+                $this->authorize($payment, $amount); // so redo the auth
+            }
+        }
+
         parent::capture($payment, $amount);
         $payment->setStatus(self::STATUS_APPROVED)
             ->setTransactionId($this->getTransactionId())
             ->setIsTransactionClosed(0);
-        $order      = $payment->getOrder();
+
         $currency   = $order->getOrderCurrencyCode();
 
         if ($payment->hasCurrentInvoice() && $currency != $order->getBaseCurrencyCode()) {
