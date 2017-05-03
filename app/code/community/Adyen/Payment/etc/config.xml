@@ -621,6 +621,14 @@
                     <model>adyen/cronjob::updateNotificationQueue</model>
                 </run>
             </adyen_payment_process_notification_queue>
+            <adyen_payment_capture_pending_invoices_by_date>
+                <schedule>
+                    <cron_expr>0 1 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>adyen/cronjob::capturePendingInvoicesByDate</model>
+                </run>
+            </adyen_payment_capture_pending_invoices_by_date>
         </jobs>
     </crontab>
 </config>
