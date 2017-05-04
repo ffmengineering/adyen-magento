@@ -297,7 +297,7 @@ abstract class Adyen_Payment_Model_Adyen_Abstract extends Mage_Payment_Model_Met
         if ($useZeroAuth) { // zero auth should be used
             $authDate = strtotime($order->getData('created_at'));
             if ($authDate < strtotime("-7 days")) { // order was auth-ed more than 7 days ago
-                $this->authorize($payment, $amount); // so redo the auth
+                $this->_processRequest($payment, $amount, "authorise"); // so redo the auth
             }
         }
 
